@@ -1,0 +1,14 @@
+﻿生成启动时间为 2019/4/3 星期三 下午 6:30:18。
+     1>项目“E:\代码\Visual Studio 2013\C++代码\C++内存管理\C++内存管理.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _UNICODE /D UNICODE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ClassCode.cpp
+         ClassCode.cpp
+     1>e:\代码\visual studio 2013\c++代码\c++内存管理\classcode.cpp(244): warning C4800: “volatile Singleton *”: 将值强制为布尔值“true”或“false”(性能警告)
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"E:\代码\Visual Studio 2013\C++代码\C++内存管理\Debug\C++内存管理.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"E:\代码\Visual Studio 2013\C++代码\C++内存管理\Debug\C++内存管理.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"E:\代码\Visual Studio 2013\C++代码\C++内存管理\Debug\C++内存管理.lib" /MACHINE:X86 Debug\ClassCode.obj
+         C++内存管理.vcxproj -> E:\代码\Visual Studio 2013\C++代码\C++内存管理\Debug\C++内存管理.exe
+     1>已完成生成项目“E:\代码\Visual Studio 2013\C++代码\C++内存管理\C++内存管理.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:01.10
