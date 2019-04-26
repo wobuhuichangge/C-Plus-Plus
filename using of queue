@@ -1,0 +1,65 @@
+# C-Plus-Plus
+
+//https://leetcode-cn.com/problems/implement-stack-using-queues/
+//用队列实现栈
+
+class MyStack {
+public:
+    /** Initialize your data structure here. */
+    MyStack() {
+        
+    }
+    
+    /** Push element x onto stack. */
+    void push(int x) {
+        if(q1.empty())
+            q2.push(x);
+        else
+            q1.push(x);
+    }
+    
+    /** Removes the element on top of the stack and returns that element. */
+    int pop() {
+        int ret = 0;
+       if(!q1.empty())
+       {
+           while(q1.size()>1)
+           {
+              q2.push(q1.front());
+              q1.pop();
+           }
+           ret =q1.back();
+           q1.pop();
+           return ret;
+       }
+       else
+       {
+           while(q2.size()>1)
+           {
+               q1.push(q2.front());
+               q2.pop();
+           }
+           ret = q2.back();
+           q2.pop();
+           return ret;
+       }
+        
+    }
+    
+    /** Get the top element. */
+    int top() {
+        if(q1.empty())
+            return q2.back();
+        else
+            return q1.back();
+    }
+    
+    /** Returns whether the stack is empty. */
+    bool empty() {
+        return q1.empty()&& q2.empty();
+    }
+    
+    queue<int> q1;
+    queue<int> q2;
+};
+
