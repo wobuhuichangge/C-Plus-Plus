@@ -1,0 +1,33 @@
+# C-Plus-Plus
+//题目描述：https://www.nowcoder.com/questionTerminal/6736cc3ffd1444a4a0057dee89be789b?orderByHotValue
+#include<iostream>
+#include<vector>
+#include<algorithm>
+
+using namespace std;
+
+int main()
+{
+    int n =0;
+    
+    while(cin>>n)
+    {
+        long long sum =0;
+        vector<int> a;
+        a.resize(n*3);
+        for(size_t i =0;i<a.size();i++)
+        {
+            cin>>a[i];
+        }
+        
+        std::sort(a.begin(),a.end());
+        
+        for(size_t i = n;i<=a.size()-2;i+=2)
+        {
+            sum +=a[i];
+        }
+        
+        cout << sum<<endl;
+    }
+    return 0;
+}

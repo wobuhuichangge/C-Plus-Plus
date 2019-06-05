@@ -1,0 +1,108 @@
+# C-Plus-Plus
+//Minstack  （LeetCode 第155题）
+class MinStack {
+public:
+    /** initialize your data structure here. */
+    MinStack() {}
+    
+    void push(int x) {
+            _data.push(x);
+            
+            if(_minData.empty() || x <= _minData.top())
+                _minData.push(x);
+        
+    }
+    
+    void pop() {
+
+        if(_minData.top() == _data.top())
+            _minData.pop();
+        
+        _data.pop();
+    }
+    
+    int top() {
+        return _data.top();
+    }
+    
+    int getMin() {
+        return _minData.top();
+    }
+    
+    stack<int> _data;
+    stack<int> _minData;
+};
+
+//栈的压入、弹出序列
+//https://leetcode-cn.com/problems/min-stack/
+class Solution {
+public:
+    bool IsPopOrder(vector<int> pushV,vector<int> popV) {
+        
+        if(pushV.size() != popV.size())
+            return false;
+        
+        size_t inIdx = 0;
+        size_t outIdx = 0;
+        stack<int> s;
+        while(outIdx < popV.size())
+        {
+           while(s.empty() || s.top() != popV[outIdx])
+           {
+               if(inIdx < pushV.size())
+                    s.push(pushV[inIdx++]);
+               else
+                    return false;
+           }    
+               s.pop();
+               outIdx++;
+        }
+        return true;
+    }
+};
+
+
+//逆波兰表达式求值
+//https://leetcode-cn.com/problems/evaluate-reverse-polish-notation/
+
+class Solution {
+public:
+    int evalRPN(vector<string>& tokens) {
+        
+        stack<int> s;
+        
+        for(size_t idx = 0;idx < tokens.size();++idx)
+        {
+            string& str = tokens[idx];
+            if(!(str =="+"||str =="-"||str == "*"||str == "/"))
+                s.push(atoi(str.c_str()));
+            else
+            {
+                int right = s.top();
+                s.pop();
+                int left = s.top();
+                s.pop();
+                
+                switch(str[0])
+                {
+                    case '+':
+                        s.push(left + right);
+                        break;
+                    case '-':
+                        s.push(left - right);
+                        break;
+                    case '*':
+                        s.push(left * right);
+                        break;
+                    case '/':
+                        s.push(left / right);
+                        break;
+                        
+                    default:
+                        break;
+                }
+            }
+        }
+        return s.top();
+    }
+};

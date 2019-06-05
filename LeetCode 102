@@ -1,0 +1,36 @@
+# C-Plus-Plus
+
+//https://leetcode-cn.com/problems/binary-tree-level-order-traversal/
+//二叉树的层序遍历（LeetCode 102题）
+
+class Solution {
+public:
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<vector<int>> vRet;
+        if(nullptr == root)
+            return vRet;
+        
+        queue<TreeNode*> q;
+        q.push(root);
+        
+        while(!q.empty())
+        {
+            vector<int> level;
+            size_t count = q.size();
+            for(size_t i = 0; i< count ;i++)
+            {
+                TreeNode* pCur = q.front();
+                level.push_back(pCur->val);
+                q.pop();
+                
+                if(pCur->left)
+                    q.push(pCur->left);
+                if(pCur->right)
+                    q.push(pCur->right);
+            }
+            
+            vRet.push_back(level);
+        }
+        return vRet;
+    }
+};
