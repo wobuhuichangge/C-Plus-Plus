@@ -1,0 +1,37 @@
+# C-Plus-Plus
+//题目描述：给一非空的单词列表，返回前 k 个出现次数最多的单词。
+//返回的答案应该按单词出现频率由高到低排序。如果不同的单词有相同出现频率，按字母顺序排序
+//题目链接：https://leetcode-cn.com/problems/top-k-frequent-words/
+
+class Solution {
+public:
+    vector<string> topKFrequent(vector<string>& words, int k) {
+        //统计并插入数据
+        map<string,int> countmap;
+        for(auto& word:words)
+            countmap[word]++;
+        //根据出现的次数排序
+        multimap<int,string,greater<int>> sortmap;//multimap默认比较方式为less
+        for(auto& countkv:countmap)
+        {
+            sortmap.insert(make_pair(countkv.second,countkv.first));
+            
+        }
+        //把排序后的依次放入ret中
+        vector<string> ret;
+        auto it = sortmap.begin();
+        while(it != sortmap.end())
+        {
+            if(k>0)
+            {
+                ret.push_back(it->second);
+                --k;
+            }
+            else
+                break;
+            ++it;
+        }
+        
+        return ret;
+    }
+};
