@@ -114,7 +114,7 @@ private:
 			for (size_t i = 0; i < _ht.capacity(); i++)
 			{
 				if (_ht[i]._state == EXIST)
-					new
+					newHt.Insert(_ht[i]._val);
 			}
 		}
 	}
