@@ -1,0 +1,20 @@
+# C-Plus-Plus
+
+题目链接：https://leetcode-cn.com/problems/reverse-linked-list/
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode* next = NULL;
+        ListNode* prev = NULL;
+        
+        while(head)
+        {
+            next = head->next;
+            head->next = prev;
+            prev = head;
+            head = next;
+        }
+        
+        return prev;
+    }
+};
