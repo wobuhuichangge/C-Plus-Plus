@@ -1,0 +1,37 @@
+# C-Plus-Plus
+
+//题目描述：给定一个二叉树，返回其按层次遍历的节点值。 （即逐层地，从左到右访问所有节点）。
+//题目链接：https://leetcode-cn.com/problems/binary-tree-level-order-traversal/
+
+
+class Solution {
+public:
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<vector<int>> vRet;
+        if(nullptr == root)
+            return vRet;
+        
+        queue<TreeNode*> q;
+        q.push(root);
+        
+        while(!q.empty())
+        {
+            vector<int> level;
+            size_t count = q.size();
+            for(size_t i = 0; i< count ;i++)
+            {
+                TreeNode* pCur = q.front();
+                level.push_back(pCur->val);
+                q.pop();
+                
+                if(pCur->left)
+                    q.push(pCur->left);
+                if(pCur->right)
+                    q.push(pCur->right);
+            }
+            
+            vRet.push_back(level);
+        }
+        return vRet;
+    }
+};
