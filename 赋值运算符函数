@@ -1,0 +1,38 @@
+//题目：如下为类型CMyString的声明，请为该类型添加赋值运算符函数
+
+class CMyString
+{
+public:
+	CMyString(char* pData = nullptr);
+	CMyString(const CMyString &str);
+	~CMyString();
+	
+private:
+	char *m_pData;
+	
+};
+
+//1.不考虑异常安全性的解法
+CMyString& CMyString::operator=(const CMyString& str)
+{
+	if(this == &str)
+		return *this;
+	delete[]m_pData;
+	m_pData = new char[strlen(str.m_pData)+1];
+	strcpy(m_pData,str.m_pData);
+	return *this;
+}
+
+//在前面的函数中，我们分配内存之前先用delete释放了实例m_pData的内存，如果此时内存不足导致new char抛异常，则m_pData将是一个空指针。
+//2.考虑异常安全性的解法
+
+CMyString& CMyString::operator=(const CMyString& str)
+{
+	if(this == &str)
+		return *this;
+	CMyString temp(str);
+	char* ptemp = str.m_pData;
+	str.m_pData = m_pData;
+	m_pData = ptemp;
+	return *this;
+}
