@@ -1,0 +1,31 @@
+//题目：找出数组中重复的数字 
+//在一个长度为n的数组里所有数字都在0~n-1范围内 如{2,3,1,0,2,5,3};那么对应的输出是2,3;
+
+bool duplicate(int numbers[],int length)
+{
+	if(length<=0||numbers ==nullptr)
+		return false;
+	for(int i = 0;i<length;i++)
+	{	
+		if(numbers[i]<0||numbers[i]>length-1)
+			return false;
+	
+	
+	for(int i = 0;i<length;i++)
+	{
+		while(numbers[i] != i)
+		{
+			if(numbers[i] == numbers[numbers[i]])
+			{
+				cout<<numbers[i];
+				return true;
+			}
+			int temp;
+			temp = numbers[i];
+			number[i] = number[temp];
+			number[temp] = temp;
+			
+		}
+		return false;
+	}
+}
